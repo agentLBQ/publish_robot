@@ -62,7 +62,8 @@ func httpHandle(logs *log.Logger, publishOnce bool) {
 }
 
 func JobInfo(cookie1 *http.Cookie, cookie2 *http.Cookie, cookie3 *http.Cookie, cookie4 *http.Cookie, cookie5 *http.Cookie, client *http.Client, logs *log.Logger) {
-	JobInfo, _ := http.NewRequest("POST", "https://bbs.byr.cn/article/JobInfo/ajax_post.json", strings.NewReader("subject="))
+	publishContent := "我是发帖内容"
+	JobInfo, _ := http.NewRequest("POST", "https://bbs.byr.cn/article/JobInfo/ajax_post.json", strings.NewReader(publishContent))
 	JobInfo.Header.Add("x-requested-with", "XMLHttpRequest")
 	JobInfo.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	JobInfo.AddCookie(cookie1)
@@ -82,7 +83,8 @@ func JobInfo(cookie1 *http.Cookie, cookie2 *http.Cookie, cookie3 *http.Cookie, c
 }
 
 func Jump(cookie1 *http.Cookie, cookie2 *http.Cookie, cookie3 *http.Cookie, cookie4 *http.Cookie, cookie5 *http.Cookie, client *http.Client, logs *log.Logger) {
-	reqJump, _ := http.NewRequest("POST", "https://bbs.byr.cn/article/Jump/ajax_post.json", strings.NewReader("content="))
+	publishContent := "我是发帖内容"
+	reqJump, _ := http.NewRequest("POST", "https://bbs.byr.cn/article/Jump/ajax_post.json", strings.NewReader(publishContent))
 	reqJump.Header.Add("x-requested-with", "XMLHttpRequest")
 	reqJump.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	reqJump.AddCookie(cookie1)
@@ -102,8 +104,8 @@ func Jump(cookie1 *http.Cookie, cookie2 *http.Cookie, cookie3 *http.Cookie, cook
 }
 
 func ParttimeJob(cookie1 *http.Cookie, cookie2 *http.Cookie, cookie3 *http.Cookie, cookie4 *http.Cookie, cookie5 *http.Cookie, client *http.Client, logs *log.Logger) {
-
-	reqParttimeJob, _ := http.NewRequest("POST", "https://bbs.byr.cn/article/ParttimeJob/ajax_post.json", strings.NewReader("content="))
+	publishContent := "我是发帖内容"
+	reqParttimeJob, _ := http.NewRequest("POST", "https://bbs.byr.cn/article/ParttimeJob/ajax_post.json", strings.NewReader(publishContent))
 	reqParttimeJob.Header.Add("x-requested-with", "XMLHttpRequest")
 	reqParttimeJob.Header.Add("Accept-Encoding", "")
 	reqParttimeJob.Header.Set("Content-Type", "application/x-www-form-urlencoded")
@@ -124,7 +126,9 @@ func ParttimeJob(cookie1 *http.Cookie, cookie2 *http.Cookie, cookie3 *http.Cooki
 }
 
 func Login(client *http.Client, logs *log.Logger) (*http.Cookie, *http.Cookie, *http.Cookie, *http.Cookie, *http.Cookie) {
-	reqLogin, _ := http.NewRequest("POST", "https://bbs.byr.cn/user/ajax_login.json", strings.NewReader("id=&passwd="))
+	id := "我是账户"
+	passwd := "我是密码"
+	reqLogin, _ := http.NewRequest("POST", "https://bbs.byr.cn/user/ajax_login.json", strings.NewReader("id="+id+"&passwd="+passwd))
 	reqLogin.Header.Add("x-requested-with", "XMLHttpRequest")
 	reqLogin.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	reqLogin.Header.Set("Cookie", "name=anny")
